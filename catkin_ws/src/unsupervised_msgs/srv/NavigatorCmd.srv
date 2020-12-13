@@ -1,0 +1,6 @@
+string trigger # trigger of the state machine 
+---
+int8 SUCCESS=0
+int8 FAIL=1
+int8 result
+string new_state

@@ -18,6 +18,16 @@ For development and tests with your laptop (Linux laptop is required):
 Locate your Arduino home folder <arduino_home> (for Linux this is usually `~/Arduino`)
 Copy the folders `ros_lib` and `uai_lib` in the arduino libraries folder (<arduino_home>/libraries)
 
+### Build the catkin workspace
+
+Build the catkin workspace with essentials tools on your laptop to be able to send services to the Arduino.
+```
+cd catkin_ws
+catkin_make
+source devel/setup.bash
+cd ..
+```
+
 ## Firmware, upload and test
 
 You can create a firmware with a NavigatorCmd service the arduino can receive to execute an action.
@@ -42,7 +52,7 @@ string new_state
 To control the arduino blink from your laptop (ros and rosserial_python package is required):
 * Open a terminal and launch `roscore`
 * Open another terminal and launch `rosrun rosserial_python serial_node.py` to communicate between roscore and the arduino
-* Open another terminal and launch `rosservice call /arduino_srv "trigger: 'on'"` to turn on the light or `rosservice call /arduino_srv "trigger: 'off'"` to turn off the light
+* Open another terminal, source the catkin workspace with `source catkin_ws/devel/setup.bash`, and launch `rosservice call /arduino_srv "trigger: 'on'"` to turn on the light or `rosservice call /arduino_srv "trigger: 'off'"` to turn off the light
 
 You can also try the other examples:
 * RelayService
